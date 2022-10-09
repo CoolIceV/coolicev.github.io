@@ -2,7 +2,7 @@
 # 站点配置
 
 baseURL = "https://zhangyepeng.cn/"
-title = "Zhang Yepeng"
+title = "叶鸾"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
@@ -96,7 +96,7 @@ uglyURLs = false
 # 作者信息
 [author]
     # 名字
-    name = "Zhang Yepeng"
+    name = "叶鸾(Ye Luan)"
     # 邮箱
     email = "y.p.zhang8664@gmail.com"
     # 座右铭或简介
@@ -296,7 +296,7 @@ uglyURLs = false
     # 如果否，则会使用你的站点标题作为默认值，并
     # 以文字的形式显示，下方可配置字号和字色。字
     # 体请到底部的字体部分配置。单位：em。
-    siteBrandFontSize = 2
+    siteBrandFontSize = 1.6
     siteBrandFontColor = "var(--color-contrast-high)"
 
 
