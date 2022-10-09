@@ -1,0 +1,161 @@
+.main {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.post-body {
+    margin-top: 4em !important;
+}
+
+.list-title, .term-title, .list-year, .list-month {
+    font-family: 'glyph-correction', 'Cinzel Decorative', 'Noto Serif SC', serif;
+}
+
+.about-title {
+    font-family: 'glyph-correction', 'Cinzel Decorative', 'Noto Serif SC', serif;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    position: unset;
+    width: 100vw;
+}
+
+.header-inner.list {
+    max-width: 42em
+}
+
+.header-inner {
+    max-width: 42em
+}
+
+.brand {
+    // font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.nav {
+    font-size: 1em;
+    margin-top: 0.4em;
+}
+
+.home .poetry {
+    padding: 6em 1em;
+}
+
+#lang-switcher {
+    margin-left: 0.3em;
+}
+
+.nav-toggle {
+    transform: translateY(0.4em);
+}
+
+.footer {
+    letter-spacing: -0.1em;
+}
+
+:root {
+    --text-wdth: 90;
+    --text-opsz: 40;
+    --text-YTLC: 460;
+}
+
+body {
+    font-variation-settings:
+        'wdth' var(--text-wdth),
+        'opsz' var(--text-opsz),
+        'YTLC' var(--text-YTLC);
+}
+
+@font-face {
+    font-family: 'Amstelvar';
+    font-display: swap;
+    src: url('#{$baseRelURL}/fonts/Amstelvar-Roman-VF.woff2') format('woff2-variations'),
+         url('#{$baseRelURL}/fonts/Amstelvar-Roman-VF.woff2') format('woff2');
+    font-weight: 100 900;
+    font-stretch: 50% 125%;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Amstelvar';
+    font-display: swap;
+    src: url('#{$baseRelURL}/fonts/Amstelvar-Italic-VF.woff2') format('woff2-variations'),
+         url('#{$baseRelURL}/fonts/Amstelvar-Italic-VF.woff2') format("woff2");
+    font-weight: 100 900;
+    font-stretch: 50% 125%;
+    font-style: italic;
+}
+
+.post-title {
+    font-family: 'glyph-correction', 'Amstelvar', 'Noto Serif SC', serif;
+    font-variation-settings:
+        'wght' 550,
+        'opsz' 60,
+        'YOPQ' 90;
+}
+
+.list-item-time {
+    font-feature-settings: 'tnum';
+}
+
+
+blockquote.quote {
+    position: relative;
+    margin: 2em auto !important;
+    padding-left: 3em;
+    color: inherit;
+    border: none;
+    p {
+        text-indent: 0 !important;
+    }
+    &::before {
+        position: absolute;
+        left: 0;
+        content: '“';
+        font-size: 3em;
+        font-weight: bold;
+        line-height: 1;
+    }
+    &.poetry {
+        display: table;
+        padding: 0;
+        &::before {
+            left: -1em;
+        }
+        p {
+            margin: 0 0 1em;
+        }
+        p:last-child {
+            margin: 0;
+        }
+    }
+    &.en {
+        p {
+            line-height: 1.618;
+            text-align: left;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+        }
+    }
+    &.italic {
+        p {
+            font-style: italic;
+        }
+    }
+}
+
+@media (max-width: $maxWidth) {
+    blockquote.quote {
+        &.poetry {
+            padding-left: 3em;
+            &::before {
+                left: 0;
+            }
+        }
+    }
+}
