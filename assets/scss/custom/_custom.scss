@@ -20,7 +20,7 @@
 
 .header {
     position: unset;
-    width: 100vw;
+    width: 100%;
 }
 
 .header-inner.list {
@@ -191,6 +191,21 @@ blockquote.quote {
             &::before {
                 left: 0;
             }
+        }
+    }
+}
+
+[data-indent="true"] {
+    .post-body {
+        blockquote {
+            p {
+                margin: 0;
+                margin-left: 3em;
+            }
+            margin: 1em 0;
+            margin-left: 2em;
+            padding: 0;
+            border: none;
         }
     }
 }
