@@ -1,5 +1,5 @@
 .main {
-    padding-top: 2em;
+    padding-top: 0.5em;
     padding-bottom: 2em;
 }
 
@@ -10,6 +10,7 @@
 .list-title, .term-title, .list-year, .list-month {
     font-family: 'glyph-correction', 'Cinzel Decorative', 'Noto Serif SC', serif;
 }
+
 
 .about-title {
     font-family: 'glyph-correction', 'Cinzel Decorative', 'Noto Serif SC', serif;
@@ -96,6 +97,39 @@ body {
         'wght' 550,
         'opsz' 60,
         'YOPQ' 90;
+}
+
+.list-item-title {
+    .custom-title {
+        display: flex;
+    }
+}
+
+.p-name, .float {
+    .custom-title {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        flex-wrap: wrap;
+        .reverse {
+            background-color: #00bbff;
+            color: aliceblue;
+        }
+        .long-cang {
+            color:#00bbff;
+            font-family:'Long Cang', cursive;
+            transform: rotate(10deg);
+            font-size: 1.3em;
+        }
+    }
+}
+
+.float {
+    float:left;
+    left:50%;
+    // position: absolute;
+    font-size: 3em;
+    writing-mode:vertical-lr;
 }
 
 .list-item-time {
