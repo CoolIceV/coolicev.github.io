@@ -207,5 +207,24 @@ blockquote.quote {
             padding: 0;
             border: none;
         }
+        h2, h3, h4, h5, h6 {
+            text-align: left;
+        }
+    }
+    .anchor-link {
+        display: none;
     }
 }
+
+.post {
+    .p {
+        .caption {
+            margin: -2em 0 0;
+        }
+    }
+    
+    .highlight {
+        margin: 0;
+    }
+}
+
