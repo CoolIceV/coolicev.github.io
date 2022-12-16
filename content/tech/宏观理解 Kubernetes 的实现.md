@@ -3,7 +3,7 @@ title: <div class="custom-title">宏观理解&nbsp;<div class='reverse'>Kubernet
 date: "2022-12-15T14:45:15+08:00"
 tags: ["Cloud Native", "Kubernetes", "云原生"]
 slug: "understand-kubernetes-in-top-view"
-preface: "{{<quote >}}这是我一年前在字节跳动实习时写的一篇学习笔记，简要总结了《Kubernetes in Action》中的部分内容，最近对其进行了重新整理，并计划补充 CRD、Informer、Helm、KubeFed、HNC 等内容。虽然文章讲解的不算深入，但对于想要在相对宏观上了解 Kubernetes 的人来说还是可以一读的。本讲作为云原生系列文章的第一篇，也是本博客的第一篇技术文章，希望能够开一个好头，完成之后还打算学习在本系列中添加边缘计算、服务网格、函数计算、持续交付、混沌工程等相关内容的介绍。{{</quote >}}"
+preface: "{{<quote >}}这是我一年前在字节跳动实习时写的一篇学习笔记，简要总结了《Kubernetes in Action》中的部分内容，最近对其进行了重新整理，并计划补充 CRD、Informer、Helm、KubeFed、HNC 等内容。虽然文章讲解的不算深入，但对于想要在相对宏观上了解 Kubernetes 的人来说还是可以一读的。本讲作为云原生系列文章的第一篇，也是本博客的第一篇技术文章，希望能够开一个好头，完成之后还打算在本系列中添加边缘计算、服务网格、函数计算、持续交付、混沌工程等相关内容的介绍。{{</quote >}}"
 indentFirstParagraph: true
 indent: false
 dropCapAfterHr: true
