@@ -228,3 +228,39 @@ blockquote.quote {
     }
 }
 
+
+.post-description {
+    text-align: justify;
+}
+
+.post-preface {
+    text-align: justify;
+    margin: 1rem 0;
+    font-size: 90%;
+}
+
+.left-toc {
+    .contents {
+        margin-top: -5em;
+        position: fixed;
+        left: 2em;
+        max-width: 18em;
+        .toc { 
+            overflow-x: hidden;
+            overflow-y: hidden;
+            max-height: 73vh;
+            font-size: 90%;
+            white-space: inherit;
+        }
+        :hover{
+            overflow-y: auto;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1392px) {
+    .left-toc {
+        display: none;
+    }
+}
