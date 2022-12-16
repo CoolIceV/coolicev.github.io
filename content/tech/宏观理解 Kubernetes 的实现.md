@@ -3,21 +3,18 @@ title: <div class="custom-title">宏观理解&nbsp;<div class='reverse'>Kubernet
 date: "2022-12-15T14:45:15+08:00"
 tags: ["Cloud Native", "Kubernetes", "云原生"]
 slug: "understand-kubernetes-in-top-view"
-preface: "{{<quote >}}这是我一年前在字节跳动实习时写的一篇学习笔记，简要总结了《Kubernetes in Action》中的部分内容，当时发布在了 ByteTech 上。最近对其进行了重新整理，并计划补充 CRD、Informer、Helm、KubeFed、HNC、CNI 等内容的介绍。虽然文章讲解的不算深入，但对于想要在相对宏观上了解 Kubernetes 的人来说还是可以一读的。本讲作为云原生系列文章的第一篇，也是本博客的第一篇技术文章，希望能够开一个好头，完成之后还打算学习并简单介绍一下边缘计算、服务网格、函数计算、持续交付、混沌工程等相关内容。{{</quote >}}"
+preface: "{{<quote >}}这是我一年前在字节跳动实习时写的一篇学习笔记，简要总结了《Kubernetes in Action》中的部分内容，最近对其进行了重新整理，并计划补充 CRD、Informer、Helm、KubeFed、HNC 等内容。虽然文章讲解的不算深入，但对于想要在相对宏观上了解 Kubernetes 的人来说还是可以一读的。本讲作为云原生系列文章的第一篇，也是本博客的第一篇技术文章，希望能够开一个好头，完成之后还打算学习在本系列中添加边缘计算、服务网格、函数计算、持续交付、混沌工程等相关内容的介绍。{{</quote >}}"
 indentFirstParagraph: true
 indent: false
 dropCapAfterHr: true
-dropCap: false
+dropCap: true
 toc: false
 leftTOC: false
 # draft: true
 ---
 
-<!-- {{<quote >}}
-这是我一年前在字节跳动实习时写的一篇学习笔记，简要总结了《Kubernetes in Action》中的部分内容，当时发布在了 ByteTech 上。最近对其进行了重新整理，并计划补充 CRD、Informer、Helm、KubeFed、HNC、CNI 等内容的介绍。虽然文章讲解的不算深入，但对于想要在相对宏观上了解 Kubernetes 的人来说还是可以一读的。本讲作为云原生系列文章的第一篇，也是本博客的第一篇技术文章，希望能够开一个好头，完成之后还打算学习并简单介绍一下边缘计算、服务网格、函数计算、持续交付、混沌工程等相关内容。
-{{</quote >}} -->
-
 ---
+
 云原生可以说是近年来最火的概念之一，云原生并不是某种具体的技术，而是一种应用设计思想，即应用程序原生为云设计，从设计之初就考虑云的环境，充分发挥云平台的弹性和分布式优势。在云原生领域中，Kubernetes 可以说是目前具有统治地位的一个工具，已成为云原生领域开发的事实标准，也正因为这个工具，越来越多的企业才能够以较低的成本搭建和维护私有云环境，实现应用的持续性交付，加速软件的迭代升级。因此，理解 Kubernetes 十分重要，属于云原生系列文章的基础，后面的内容也基本都会基于 Kubernetes 框架介绍。
 
 本文我们更注重 Kubernetes 的核心概念，从宏观上理解 Kubernetes 的实现思想，而不是如何使用 Kubernetes，自然也不会过分的关注具体细节。
