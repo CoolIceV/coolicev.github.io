@@ -224,10 +224,10 @@ uglyURLs = false
     [[menu.main]]
         weight = 6
         identifier = "theme-switcher"
-    [[menu.main]]
-        weight = 7
-        identifier = "search"
-        post = "search"
+    # [[menu.main]]
+    #     weight = 7
+    #     identifier = "search"
+    #     post = "search"
     # [[menu.main]]
     #     pageref = "/posts/"
     #     name = "文章"
@@ -1389,7 +1389,7 @@ uglyURLs = false
     #      次将生成的 algolia.json 文件上传到
     #      Algolia
 
-    enableAlgoliaSearch = true
+    enableAlgoliaSearch = false
 
     algoliaAppId = "X6Y31PNJW5"
     algoliaApiKey = "5d92cb6ebf6d3d25172676e6795e8f3f"
