@@ -78,13 +78,13 @@ K8s 中的对象是系统中持久化的实体，它们表示的是集群的状�
 **如何描述**
 
 我们可以使用 JSON 或 YAML 格式的数据来描述一个对象，每一个对象都包括以下四个部分：
-- Type Metadata：API 组和类型，这一部分包含了这个对象的类型，K8s 的对象是根据 API 版本分组进行管理的，不同类型的资源可能在不同的组或版本下，我们通过这一部分明确的告诉 K8s 对象的类型。
-- Object Metadata：元数据，这一部分描述的是对象的基本信息，包括对象名称、创建时间、标签、命名空间和其他来标识对象的信息，我们获取对象的时候是根据这部分的信息中的名称、命名空间、标签等进行匹配的。
+- `Type Metadata`：API 组和类型，这一部分包含了这个对象的类型，K8s 的对象是根据 API 版本分组进行管理的，不同类型的资源可能在不同的组或版本下，我们通过这一部分明确的告诉 K8s 对象的类型。
+- `Object Metadata`：元数据，这一部分描述的是对象的基本信息，包括对象名称、创建时间、标签、命名空间和其他来标识对象的信息，我们获取对象的时候是根据这部分的信息中的名称、命名空间、标签等进行匹配的。
 
 以上两部分对于所有对象来说字段都是相同的，而接下来两个字段不同类型的对象拥有着不同的定义。
 
-- Spec：对象的规格，这部分详细描述了对象的内容，是我们期望的对象的状态，里面包含了该对象需要的资源以及策略，K8s 的调度其实就是不断进行操作来使集群达到或处于这部分的状态。
-- Status：对象当前的状态，这部分描述的是对象在 K8s 中某一具体时间的实际状态，这一部分会表明 K8s 实际为该对象分配的资源以及该对象所处的生命周期阶段，同时还会包括该对象最近产生的变化以及对应的原因等信息，K8s 会一直监听该对象来使该对象的实际状态与 Spec 描述的一致。
+- `Spec`：对象的规格，这部分详细描述了对象的内容，是我们期望的对象的状态，里面包含了该对象需要的资源以及策略，K8s 的调度其实就是不断进行操作来使集群达到或处于这部分的状态。
+- `Status`：对象当前的状态，这部分描述的是对象在 K8s 中某一具体时间的实际状态，这一部分会表明 K8s 实际为该对象分配的资源以及该对象所处的生命周期阶段，同时还会包括该对象最近产生的变化以及对应的原因等信息，K8s 会一直监听该对象来使该对象的实际状态与 Spec 描述的一致。
 
 ![Kubernetes 对象](/images/宏观理解Kubernetes的实现/object.svg "Kubernetes 对象")
 
@@ -227,10 +227,10 @@ Pod 所处的阶段（Parse）是由它所包括的所有容器的状态来决�
 
 上面说的这几个状态只是简单地说明了 Pod 所处的阶段（Parse），除此之外，每个 Pod 还包含一组条件（Conditions），K8s 会对这些条件进行探测（包括前面说到的探针），探测成功则为 True，否则为 False，这些 Conditions 的组合才是 K8s 进行管理的依据。
 Pod 默认有以下四个 Condition：
-- PodScheduled：Pod 已经被调度到某节点；
-- ContainersReady：Pod 中所有容器都已就绪；
-- Initialized：所有的 Init 容器都已成功运行完；
-- Ready：Pod 可以为请求提供服务，并且应该被添加到对应服务的 IP 列表中。
+- `PodScheduled`：Pod 已经被调度到某节点；
+- `ContainersReady`：Pod 中所有容器都已就绪；
+- `Initialized`：所有的 Init 容器都已成功运行完；
+- `Ready`：Pod 可以为请求提供服务，并且应该被添加到对应服务的 IP 列表中。
 
 除了这四个，我们也可以自己定义一些 Condition， 如下所示：
 
@@ -260,7 +260,7 @@ ReplicaSet 判断 Pod 是否应该被自己管理并不是依据 Pod 的规格�
 
 ![Deployment](/images/宏观理解Kubernetes的实现/deployment.svg "Deployment")
 
-Deployment 能做的远不止这样，它还能做到零停机、不停服的滚动更新，也就是所有的 Pod 一部分一部分得用新版本进行替换掉，以此来保证服务不中断。接下来我们介绍两个重要参数，MaxSurge 和 MaxUnavailable，这两个参数可以是整数，也可以是相对于所有实例数的百分比。MaxSurge 实际上是更新过程中所有服务副本的上限，MaxUnavailable 是更新过程中可用服务副本（处于 Ready 状态的 Pod）数量的下限。以 replica=3，maxSurge=20%，maxUnavailable=20% 为例，在更新过程中，所有副本数量不会超过3+⌈3\*20%⌉=4，可用副本数量不会低于3-⌈3\*20%⌉=2，K8s 会在这两个参数允许的范围内以尽可能大的比例进行升级，如下图所示：
+Deployment 能做的远不止这样，它还能做到零停机、不停服的滚动更新，也就是所有的 Pod 一部分一部分得用新版本进行替换掉，以此来保证服务不中断。接下来我们介绍两个重要参数，MaxSurge 和 MaxUnavailable，这两个参数可以是整数，也可以是相对于所有实例数的百分比。MaxSurge 实际上是更新过程中所有服务副本的上限，MaxUnavailable 是更新过程中可用服务副本（处于 Ready 状态的 Pod）数量的下限。以 replica=3，maxSurge=20%，maxUnavailable=20% 为例，在更新过程中，所有副本数量不会超过 3+⌈3\*20%⌉=4，可用副本数量不会低于 3-⌈3\*20%⌉=2，K8s 会在这两个参数允许的范围内以尽可能大的比例进行升级，如下图所示：
 
 ![滚动更新](/images/宏观理解Kubernetes的实现/rolling-update.svg "滚动更新")
 
@@ -289,15 +289,15 @@ Service 具有固定的 IP 和端口，Service 实际上是对一组 IP 进行�
 ![Kubernetes 架构](/images/宏观理解Kubernetes的实现/arch.svg "Kubernetes 架构")
 
 K8s 集群由一组节点组成，每个节点是一个虚拟机或物理机，这些节点被分成两类，其中一类是控制平面节点，或被称为主节点，这类节点一般运行着相同的控制组件，而且不会运行用户创建的容器，我们先来看一下主节点里的组件：
-- etcd：兼具一致性和高可用性的键值数据库，作为保存 Kubernetes 所有集群数据的后台数据库
-- API server：它是 K8s 所有操作必须经过的一个节点，也是唯一一个能操作 etcd 的组件，其他所有组件都与 API server 进行通信
-- Scheduler：负责调度，是 K8s 进行资源调度的地方，为新创建的、未指定运行节点（node）的  Pods 根据调度策略分配节点
-- Controller Manager：是一系列资源控制器 Controller 的集合，每个资源都会有自己的 Controller，负责监听相应对象的状态并进行创建、修改、删除等操作，如 Node 、ReplicaSet、Deployment 都有相对应的 Controller
+- `etcd`：兼具一致性和高可用性的键值数据库，作为保存 Kubernetes 所有集群数据的后台数据库
+- `API server`：它是 K8s 所有操作必须经过的一个节点，也是唯一一个能操作 etcd 的组件，其他所有组件都与 API server 进行通信
+- `Scheduler`：负责调度，是 K8s 进行资源调度的地方，为新创建的、未指定运行节点（node）的  Pods 根据调度策略分配节点
+- `Controller Manager`：是一系列资源控制器 Controller 的集合，每个资源都会有自己的 Controller，负责监听相应对象的状态并进行创建、修改、删除等操作，如 Node 、ReplicaSet、Deployment 都有相对应的 Controller
 
 除了控制面节点，还有一类节点被称为工作节点，这类节点是运行用户 Pod 的地方，这类节点一般会包括三个组件：
-- Kubelet：从 API server 获取所处节点应运行的 Pod 的规格，确保容器健康运行，同时监听所处节点所有 Pod 的状态并通知给 API server
-- Kube proxy：每个节点上的网络代理，维护节点上的网络规则，用于实现 Service 对象
-- Container Runtime：负责运行容器的软件，除 Docker 外， 还可以是 containerd 等
+- `Kubelet`：从 API server 获取所处节点应运行的 Pod 的规格，确保容器健康运行，同时监听所处节点所有 Pod 的状态并通知给 API server
+- `Kube proxy`：每个节点上的网络代理，维护节点上的网络规则，用于实现 Service 对象
+- `Container Runtime`：负责运行容器的软件，除 Docker 外， 还可以是 containerd 等
 
 
 ### 第二部分：组件通信
