@@ -39,7 +39,7 @@
             {{ if .Params.preface }}
                 {{ with .Params.preface }}
                     {{- $raw := . -}}
-                    <div class="post-preface p-summary">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
+                    <div class="post-preface post-description p-summary">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
                 {{ end }}
             {{ end }}
 
