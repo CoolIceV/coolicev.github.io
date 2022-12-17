@@ -1114,7 +1114,7 @@ uglyURLs = false
     # Git 的图标
     gitIcon = "code-branch"
     # 是否显示改动哈希
-    displayCommitHash = false
+    displayCommitHash = true
 
     # 是否显示改动信息
     displayCommitMessage = false
