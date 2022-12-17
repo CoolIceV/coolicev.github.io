@@ -495,7 +495,7 @@ uglyURLs = false
     # Atom & RSS
 
     # 是否包括全文内容
-    includeContent = true
+    includeContent = false
     # 说明：如果否，则只会包含文章的摘要。关于摘
     #      要，Hugo 能按你设置的字数限制自动截
     #      取，你也可以在文章中通过
@@ -698,7 +698,7 @@ uglyURLs = false
     ######################################
     # Google Site Verification
 
-    googleSiteVerification = ""
+    googleSiteVerification = "EFR2mhM4GQjh7rM1pNaaoOWKkvHS4rcXSBwFc-y7knc"
 
 
     ######################################
@@ -1114,10 +1114,10 @@ uglyURLs = false
     # Git 的图标
     gitIcon = "code-branch"
     # 是否显示改动哈希
-    displayCommitHash = true
+    displayCommitHash = false
 
     # 是否显示改动信息
-    displayCommitMessage = true
+    displayCommitMessage = false
     # 改动信息的图标
     msgIcon = "info"
 
