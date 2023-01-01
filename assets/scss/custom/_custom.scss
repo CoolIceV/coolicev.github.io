@@ -264,3 +264,13 @@ blockquote.quote {
         display: none;
     }
 }
+
+.post-nav {
+    a {
+        display: flex;
+    }
+    .custom-title {
+        flex-wrap: wrap;
+        display: flex; 
+    }
+}
