@@ -103,6 +103,7 @@ body {
     .custom-title {
         flex-wrap: wrap;
         display: flex;
+        white-space: nowrap;
     }
 }
 
@@ -272,5 +273,6 @@ blockquote.quote {
     .custom-title {
         flex-wrap: wrap;
         display: flex; 
+        white-space: nowrap;
     }
 }
