@@ -9,7 +9,7 @@ indent: false
 dropCapAfterHr: true
 dropCap: true
 toc: false
-leftTOC: false
+leftTOC: true
 # draft: true
 ---
 
